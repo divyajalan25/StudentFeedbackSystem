@@ -1,159 +1,74 @@
 <div align="center">
 # 🎓 Student Feedback Management System
-### A Java-based CLI application for collecting, managing, moderating and analysing student feedback.
-<br>
-![Java](https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk)
-![CLI](https://img.shields.io/badge/Application-CLI-blue?style=for-the-badge)
-![File Storage](https://img.shields.io/badge/Storage-Text%20Files-green?style=for-the-badge)
+### Collect • Manage • Moderate • Analyse
+A Java CLI application built for managing student feedback in a simple and structured way.
+![Java](https://img.shields.io/badge/Java-25-orange?style=for-the-badge&logo=openjdk&logoColor=white)
+![CLI](https://img.shields.io/badge/CLI-Application-6C63FF?style=for-the-badge)
+![Storage](https://img.shields.io/badge/Storage-Text%20Files-2EA44F?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
-<br>
-**Java Course Project | B.Tech CSE (AI & ML)**  
-**VIT Bhopal University**
+[View Repository →](https://github.com/divyajalan25/StudentFeedbackSystem)
 </div>
 ---
-## 📌 Overview
-The **Student Feedback Management System** is a menu-driven Java application designed to provide a simple way to collect and manage student feedback.
-The system allows students to be registered, feedback to be submitted for subjects, comments to be moderated, and feedback to be searched, updated, deleted and analysed.
-The project demonstrates core Java concepts including:
-- Object-Oriented Programming
-- Classes and Objects
-- Encapsulation
-- ArrayList collections
-- Packages
-- File Handling
-- Exception Handling
-- Input Validation
-- String Processing
-- Modular Programming
-The application runs completely through the **command line**, making it lightweight and easy to execute without any external database or framework.
+## 💭 About the Project
+Giving feedback is easy.
+Managing multiple feedback records properly is a different story.
+So, I built this **Student Feedback Management System** using Java. It allows students to be registered, feedback to be submitted and managed, comments to be moderated, and feedback data to be analysed.
+The entire application runs through the **command line** and uses local text files for storing data.
 ---
-# ✨ Feature Overview
-| Feature | Description |
-|---|---|
-| 👤 Student Registration | Register students using a unique Student ID |
-| 📝 Feedback Management | Add, view, update and delete feedback |
-| 🔎 Feedback Search | Search feedback using subject names |
-| ⭐ Rating System | Give ratings from 1 to 5 |
-| 🛡️ Content Moderation | Automatically masks selected inappropriate words |
-| 💾 Data Persistence | Saves student and feedback data into text files |
-| 📊 Statistics | Calculates total feedback, average rating and rating counts |
-| ✅ Input Validation | Validates IDs, ratings and required text fields |
-| 💻 CLI Interface | Simple menu-driven command-line interaction |
+## ✨ Features
+| 👤 Students | 📝 Feedback | 📊 Analysis |
+|---|---|---|
+| Student registration | Add feedback | Total feedback |
+| Unique Student ID | View feedback | Average rating |
+| View students | Search by subject | 5-star count |
+| Duplicate ID checking | Update feedback | 1-star count |
+| | Delete feedback | |
+### Also included
+- ⭐ Rating system from 1–5
+- 🛡️ Basic content moderation
+- ✅ Input validation
+- 💾 Persistent local storage
+- ⚠️ Error handling
+- 🔎 Case-insensitive subject search
 ---
-# 🏗️ System Architecture
-The project follows a simple layered structure:
-```text
-                ┌─────────────────────┐
-                │       Main.java     │
-                │   CLI / User Input  │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │   Service Layer     │
-                │                     │
-                │ StudentService      │
-                │ FeedbackService     │
-                │ FeedbackStatistics  │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │     Model Layer     │
-                │                     │
-                │ Student             │
-                │ Feedback            │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │     Utility Layer   │
-                │                     │
-                │ InputValidator      │
-                │ ContentModerator    │
-                │ FileManager         │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │    Text Storage     │
-                │                     │
-                │ students.txt        │
-                │ feedback.txt        │
-                └─────────────────────┘
-
-Architecture Layers
-
-Main Layer
-
-Handles the command-line menu, user input and overall application flow.
-
-Service Layer
-
-Contains the main application logic for students, feedback and statistics.
-
-Model Layer
-
-Contains the data classes representing students and feedback.
-
-Utility Layer
-
-Provides reusable functions for validation, content moderation and file operations.
-
-Storage Layer
-
-Stores data locally using text files so that information remains available after restarting the application.
+## 🔄 How It Works
+```mermaid
+flowchart LR
+    A[👤 Student] --> B[📝 Submit Feedback]
+    B --> C[✅ Validate Input]
+    C --> D[🛡️ Moderate Comment]
+    D --> E[💾 Save Data]
+    E --> F[🔎 Search / Update / Delete]
+    E --> G[📊 View Statistics]
 
 ⸻
 
-🔄 System Workflow
+🏗️ Architecture
 
-        START
-          │
-          ▼
-   Display Main Menu
-          │
-          ▼
-   Select an Operation
-          │
-     ┌────┴─────┐
-     │          │
-     ▼          ▼
- Student      Feedback
-Registration  Management
-     │          │
-     │          ▼
-     │    Validate Input
-     │          │
-     │          ▼
-     │    Check Student ID
-     │          │
-     │          ▼
-     │    Moderate Comment
-     │          │
-     │          ▼
-     │      Save Data
-     │          │
-     └────┬─────┘
-          │
-          ▼
-    View / Search /
-    Update / Delete
-          │
-          ▼
-     View Statistics
-          │
-          ▼
-         EXIT
+flowchart TB
+    A["💻 Main.java<br/>CLI Interface"]
+    A --> B["⚙️ Service Layer"]
+    B --> B1["StudentService"]
+    B --> B2["FeedbackService"]
+    B --> B3["FeedbackStatistics"]
+    B1 --> C["📦 Model Layer"]
+    B2 --> C
+    C --> C1["Student"]
+    C --> C2["Feedback"]
+    B --> D["🧰 Utility Layer"]
+    D --> D1["InputValidator"]
+    D --> D2["ContentModerator"]
+    D --> D3["FileManager"]
+    D3 --> E["💾 students.txt"]
+    D3 --> F["💾 feedback.txt"]
 
 ⸻
 
-🧩 Project Structure
+📁 Project Structure
 
 StudentFeedbackSystem/
 │
 ├── src/
-│   │
 │   ├── Main.java
 │   │
 │   ├── model/
@@ -172,211 +87,72 @@ StudentFeedbackSystem/
 │
 ├── statement.md
 ├── README.md
-├── .gitignore
-└── students.txt / feedback.txt
+└── .gitignore
 
 ⸻
 
-🛠️ Technology Used
+☕ Tech Used
 
-Programming Language
+Java 25
 
-Java
+The project uses core Java concepts rather than external frameworks.
 
-Java Concepts
-
-* Classes and Objects
+* Object-Oriented Programming
+* Classes & Objects
 * Encapsulation
-* Constructors
-* Getters and Setters
 * ArrayList
-* Methods
 * Packages
-* Loops and Conditional Statements
-* Exception Handling
 * File I/O
+* Exception Handling
+* Input Validation
 * String Processing
+* Regular Expressions
 
-Storage
-
-Local text files:
-
-students.txt
-feedback.txt
-
-Development Environment
-
-* Java 25
-* VS Code
-* macOS Terminal
-* Git
-* GitHub
-
-External Libraries
-
-No external libraries or frameworks are required.
-
-⸻
-
-👤 Student Registration
-
-The registration module allows a student to create a profile using:
-
-* Student ID
-* Name
-* Email
-
-Each student must have a unique Student ID.
-
-Example
-
-Enter Student ID: 101
-Enter Student Name: Divya
-Enter Email: divya@example.com
-Student registered successfully!
-
-If the same ID is entered again:
-
-Student ID already exists.
-Registration failed.
-
-This prevents duplicate student records.
-
-⸻
-
-📝 Feedback Management
-
-Students can submit feedback by providing:
-
-* Feedback ID
-* Student ID
-* Subject
-* Rating
-* Comment
-
-Example:
-
-Enter Feedback ID: 1
-Enter Student ID: 101
-Enter Subject: Java
-Enter Rating: 5
-Enter Comment: The subject was well explained.
-Feedback added successfully!
-
-Before feedback is stored, the system checks whether the student exists.
-
-⸻
-
-⭐ Rating System
-
-The system accepts ratings from:
-
-1 → Lowest Rating
-2
-3
-4
-5 → Highest Rating
-
-Only ratings between 1 and 5 are accepted.
-
-Invalid input such as:
-
-0
-6
-
-is rejected.
-
-This prevents invalid rating values from entering the system.
+Tools: VS Code • Terminal • Git • GitHub
 
 ⸻
 
 🛡️ Content Moderation
 
-The project includes a basic content moderation module.
+Feedback comments pass through a basic moderation step before being stored.
 
-Selected inappropriate words are automatically replaced with asterisks before the feedback is displayed.
+"This subject is stupid."
+             ↓
+      🛡️ ContentModerator
+             ↓
+"This subject is ******."
 
-Example
-
-Input:
-
-This subject is stupid.
-
-Output:
-
-This subject is ******.
-
-The moderation logic is implemented inside:
-
-ContentModerator.java
-
-This demonstrates basic string processing and input sanitisation.
+Selected inappropriate words are replaced with asterisks using Java string processing and regular expressions.
 
 ⸻
 
-🔎 Search Feedback
+💾 Data Persistence
 
-Users can search for feedback using the subject name.
+The application doesn’t lose everything when the terminal closes.
 
-Example:
+Student and feedback information is stored in:
 
-Enter subject to search: Java
+students.txt
+feedback.txt
+Run Application
+      ↓
+Add / Update / Delete Data
+      ↓
+Save to File
+      ↓
+Exit
+      ↓
+Run Again
+      ↓
+Load Previous Data
 
-The system displays matching feedback records.
-
-The search is case-insensitive, so:
-
-Java
-java
-JAVA
-
-can all match the same subject.
-
-⸻
-
-✏️ Update Feedback
-
-Existing feedback can be updated using its Feedback ID.
-
-The user can change:
-
-* Rating
-* Comment
-
-Example:
-
-Enter Feedback ID: 1
-Enter New Rating: 4
-Enter New Comment: The lectures were good but more examples would help.
-Feedback updated successfully!
-
-⸻
-
-🗑️ Delete Feedback
-
-Feedback can also be removed using its Feedback ID.
-
-Example:
-
-Enter Feedback ID: 1
-Feedback deleted successfully!
-
-The updated feedback list is then saved back to the storage file.
+No database setup is required.
 
 ⸻
 
 📊 Feedback Statistics
 
-The system provides basic feedback analysis.
-
-The statistics module calculates:
-
-* Total number of feedback records
-* Average rating
-* Number of 5-star ratings
-* Number of 1-star ratings
-
-Example:
+The statistics module currently provides:
 
 --- Feedback Statistics ---
 Total Feedback: 10
@@ -384,64 +160,13 @@ Average Rating: 4.20/5
 5-Star Feedback: 5
 1-Star Feedback: 1
 
-This gives a quick overview of the collected feedback.
+This gives a quick overview of the feedback collected by the system.
 
 ⸻
 
-💾 Data Persistence
+🖥️ Application
 
-The application uses Java file handling to store data locally.
-
-Two files are used:
-
-students.txt
-feedback.txt
-
-Example student record:
-
-101|Divya|divya@example.com
-
-Example feedback record:
-
-1|101|Java|5|The subject was well explained.
-
-When the program starts, existing records are loaded from these files.
-
-When a record is added, updated or deleted, the corresponding file is updated.
-
-Therefore, data is preserved even after the application is closed.
-
-⸻
-
-🔐 Input Validation
-
-The application validates important user inputs before processing them.
-
-Student ID
-
-Must be greater than zero.
-
-Feedback ID
-
-Must be greater than zero.
-
-Rating
-
-Must be between 1 and 5.
-
-Text Fields
-
-Required text fields cannot be empty.
-
-Student Verification
-
-Feedback cannot be added for an unregistered Student ID.
-
-⸻
-
-💻 Application Menu
-
-The application provides a menu-driven interface.
+Main Menu
 
 ===== Student Feedback Management System =====
 1. Register Student
@@ -455,335 +180,133 @@ The application provides a menu-driven interface.
 9. Exit
 Enter your choice:
 
-The menu allows users to access all major functions from one place.
+Feedback Flow
+
+Feedback ID
+     +
+Student ID
+     +
+Subject
+     +
+Rating
+     +
+Comment
+     ↓
+Validation
+     ↓
+Moderation
+     ↓
+Storage
 
 ⸻
 
 🧪 Testing
 
-The application was tested manually using different valid and invalid inputs.
+The main functionality was manually tested using both valid and invalid inputs.
 
-Test Case	Expected Result	Status
-Register valid student	Student added	✅ Passed
-Register duplicate Student ID	Registration rejected	✅ Passed
-Add feedback for registered student	Feedback added	✅ Passed
-Add feedback for unregistered student	Feedback rejected	✅ Passed
-Enter rating 6	Input rejected	✅ Passed
-Enter rating 0	Input rejected	✅ Passed
-Enter inappropriate word	Word masked	✅ Passed
-Search existing subject	Matching feedback shown	✅ Passed
-Update feedback	Feedback changed	✅ Passed
-Delete feedback	Feedback removed	✅ Passed
-Restart application	Previous data loaded	✅ Passed
-View statistics	Correct values displayed	✅ Passed
-
-⸻
-
-🧠 Design Decisions
-
-Why Java?
-
-Java was selected because the project is intended to demonstrate core Java programming and Object-Oriented Programming concepts.
-
-Why ArrayList?
-
-ArrayList provides a simple way to store and manage multiple student and feedback objects dynamically.
-
-Why Text Files?
-
-Text files keep the project lightweight and remove the need for an external database while still demonstrating persistent storage and Java File I/O.
-
-Why Separate Packages?
-
-The project is divided into:
-
-model
-service
-util
-
-to keep data classes, business logic and reusable utilities separated.
-
-This makes the code easier to understand and maintain.
-
-⸻
-
-📦 Classes and Responsibilities
-
-Class	Responsibility
-Main	Handles CLI menu and user interaction
-Student	Represents student information
-Feedback	Represents feedback information
-StudentService	Manages student records
-FeedbackService	Manages feedback operations
-FeedbackStatistics	Calculates feedback statistics
-InputValidator	Validates user input
-ContentModerator	Masks selected inappropriate words
-FileManager	Handles reading and writing files
-
-The project contains 9 Java classes, keeping the implementation modular.
-
-⸻
-
-⚙️ Implementation Highlights
-
-Object-Oriented Design
-
-The project uses separate classes for different entities and responsibilities.
-
-For example:
-
-Student
-Feedback
-
-represent the application’s main data objects.
-
-Encapsulation
-
-Important data members are declared as private and accessed using methods.
-
-Example:
-
-private int studentId;
-private String name;
-private String email;
-
-Collections
-
-ArrayList is used to store student and feedback objects.
-
-File Handling
-
-Java’s:
-
-BufferedReader
-BufferedWriter
-FileReader
-FileWriter
-
-are used for persistent storage.
-
-Exception Handling
-
-File operations are handled using try-catch blocks to prevent application crashes due to common file-related errors.
+✓ Student registration
+✓ Duplicate Student ID rejection
+✓ Feedback submission
+✓ Unregistered Student ID rejection
+✓ Invalid rating rejection
+✓ Content moderation
+✓ Subject search
+✓ Feedback update
+✓ Feedback deletion
+✓ Statistics
+✓ Data persistence after restart
 
 ⸻
 
 📸 Screenshots
 
-Screenshots of the working application can be added below.
-
 Main Menu
 
-Add screenshot here
+<!-- Add screenshot here -->
 
 Student Registration
 
-Add screenshot here
+<!-- Add screenshot here -->
 
 Feedback Submission
 
-Add screenshot here
+<!-- Add screenshot here -->
 
 Content Moderation
 
-Add screenshot here
-
-Search / Update / Delete
-
-Add screenshot here
+<!-- Add screenshot here -->
 
 Statistics
 
-Add screenshot here
-
-Terminal Execution
-
-Add screenshot here
+<!-- Add screenshot here -->
 
 ⸻
 
-🚀 How to Access the Project
+🚀 Run Locally
 
-The complete source code is available on GitHub:
-
-Repository:
-https://github.com/divyajalan25/StudentFeedbackSystem
-
-Clone the repository using:
+1. Clone the repository
 
 git clone https://github.com/divyajalan25/StudentFeedbackSystem.git
 
-Move into the project folder:
+2. Open the project
 
 cd StudentFeedbackSystem
 
-⸻
-
-▶️ How to Run
-
-Make sure Java is installed.
-
-Check the Java version:
-
-java -version
-
-Check the compiler:
-
-javac -version
-
-Compile the project:
+3. Compile
 
 javac -d out src/Main.java src/model/*.java src/service/*.java src/util/*.java
 
-Run the application:
+4. Run
 
 java -cp out Main
 
-The application will start in the terminal.
+And you’re ready to go. 🚀
 
 ⸻
 
-📁 Data Files
+🧩 Java Classes
 
-The application creates/uses two local files:
+Class	Responsibility
+Main	Handles the menu and user interaction
+Student	Stores student information
+Feedback	Stores feedback information
+StudentService	Manages student records
+FeedbackService	Handles feedback operations
+FeedbackStatistics	Calculates statistics
+InputValidator	Validates user input
+ContentModerator	Moderates selected words
+FileManager	Handles file storage
 
-students.txt
-feedback.txt
-
-These files store application data between executions.
-
-The generated out/ directory contains compiled .class files and is excluded from Git using .gitignore.
-
-⸻
-
-📋 Project Requirements Covered
-
-The project covers the major requirements expected from the Java course project.
-
-Functional Requirements
-
-* Student registration
-* Feedback creation
-* Feedback viewing
-* Feedback searching
-* Feedback updating
-* Feedback deletion
-* Rating system
-* Feedback statistics
-* Content moderation
-
-Non-Functional Requirements
-
-* Usability
-* Reliability
-* Maintainability
-* Error handling
-* Resource efficiency
-* Data persistence
-
-Technical Requirements
-
-* Modular Java implementation
-* Multiple classes
-* Package structure
-* Object-Oriented Programming
-* File handling
-* Input validation
-* Exception handling
-* Git/GitHub version control
+The project contains 9 Java classes, keeping the implementation divided into manageable parts.
 
 ⸻
 
-🎯 Project Scope
+🔮 Future Improvements
 
-The current version focuses on a simple command-line feedback management workflow.
+The current version focuses on the core Java implementation.
 
-The system is suitable as a small academic project for demonstrating Java programming concepts.
+Some ideas for future versions:
 
-It does not currently include:
-
-* A web interface
-* A graphical user interface
-* A relational database
-* Cloud deployment
-* User authentication
-* Advanced natural language processing
-
-These can be considered for future versions.
-
-⸻
-
-🔮 Future Enhancements
-
-Possible improvements include:
-
-* 🌐 Web-based interface
-* 🗄️ MySQL or other database integration
-* 🔐 Student and Admin login
-* 📧 Email notifications
+* 🌐 Web interface
+* 🗄️ MySQL database
+* 🔐 Student/Admin authentication
 * 📈 More detailed analytics
-* 📊 Graphical reports
-* 🔍 Advanced feedback filtering
-* 🤖 AI-based sentiment analysis
-* ☁️ Cloud-based data storage
+* 🤖 Sentiment analysis
+* ☁️ Cloud storage
 * 📱 Mobile-friendly interface
 
 ⸻
 
-📚 Learning Outcomes
+📚 Documentation
 
-Through this project, the following concepts were practically implemented:
+statement.md contains the:
 
-* Designing Java classes
-* Applying encapsulation
-* Working with objects
-* Using ArrayList
-* Creating packages
-* Writing reusable methods
-* Handling files
-* Handling exceptions
-* Validating user input
-* Processing strings
-* Building menu-driven applications
-* Structuring a multi-class Java project
-* Using Git and GitHub for project management
-
-⸻
-
-📄 Project Documentation
-
-Additional project documentation is available in:
-
-statement.md
-
-It contains the project problem statement, scope, target users and high-level features.
-
-The project report includes:
-
-* Introduction
 * Problem Statement
-* Objectives
-* Functional Requirements
-* Non-Functional Requirements
-* System Architecture
-* Workflow
-* UML Diagrams
-* Implementation
-* Testing
-* Challenges
-* Learnings
-* Future Enhancements
-* References
+* Project Scope
+* Target Users
+* High-Level Features
 
-⸻
-
-🗂️ Repository
-
-The complete project is available here:
-
-👉 https://github.com/divyajalan25/StudentFeedbackSystem
-
-The repository contains the Java source code, project documentation and configuration files required to run the application.
+The accompanying project report covers the architecture, workflow, UML diagrams, implementation, testing, challenges and learnings.
 
 ⸻
 
@@ -793,3 +316,16 @@ Divya Jalan
 
 B.Tech CSE (AI & ML)
 VIT Bhopal University
+
+GitHub Repository⁠￼
+
+⸻
+
+<div align="center">
+
+Built with ☕ Java
+
+Student Feedback Management System
+
+</div>
+```
