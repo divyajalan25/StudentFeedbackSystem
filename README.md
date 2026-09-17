@@ -1,6 +1,6 @@
-Student Feedback Management System
+## Student Feedback Management System
 
-Overview
+## Overview
 
 The Student Feedback Management System is a Java-based command-line application designed to collect, manage, search, update, and analyze student feedback.
 
@@ -8,7 +8,7 @@ The system allows students to be registered before submitting feedback. Each fee
 
 The system uses text files for persistent storage, so student and feedback data remains available even after the program is closed.
 
-Features
+## Features
 
 * Student registration
 * Duplicate Student ID detection
@@ -25,7 +25,7 @@ Features
 * Persistent file-based data storage
 * Input validation and error handling
 
-Technology Used
+## Technology Used
 
 * Language: Java
 * Java Version: Java 25
@@ -34,7 +34,7 @@ Technology Used
 * Development Environment: VS Code
 * Version Control: Git and GitHub
 
-Project Structure
+## Project Structure
 
 StudentFeedbackSystem/
 │
@@ -60,7 +60,7 @@ StudentFeedbackSystem/
 ├── .gitignore
 └── README.md
 
-How to Run
+## How to Run
 
 1. Clone the repository
 
@@ -78,7 +78,7 @@ javac -d out src/Main.java src/model/*.java src/service/*.java src/util/*.java
 
 java -cp out Main
 
-Main Menu
+## Main Menu
 
 The application provides the following options:
 
@@ -92,7 +92,7 @@ The application provides the following options:
 8. View Feedback Statistics
 9. Exit
 
-Data Storage
+## Data Storage
 
 The application stores data in two text files:
 
@@ -107,14 +107,14 @@ Before feedback is stored, the comment is checked for a small predefined list of
 
 Detected words are replaced with * characters.
 
-For example:
+## For example:
 
 Input:
 This subject is stupid
 Stored:
 This subject is ******
 
-Validation
+## Validation
 
 The application performs basic input validation, including:
 
@@ -127,7 +127,7 @@ The application performs basic input validation, including:
 * Required text fields cannot be empty.
 * Invalid numeric input is handled using exception handling.
 
-Feedback Statistics
+## Feedback Statistics
 
 The system provides basic feedback analysis:
 
@@ -136,7 +136,7 @@ The system provides basic feedback analysis:
 * Number of 5-star feedback entries
 * Number of 1-star feedback entries
 
-Testing
+## Testing
 
 The following functional cases were tested:
 
@@ -152,13 +152,13 @@ Update feedback	Feedback is updated
 Delete feedback	Feedback is removed
 Restart application	Previously saved data remains available
 
-Project Scope
+## Project Scope
 
 The project focuses on providing a simple and reliable feedback management system for an educational environment using Java and object-oriented programming concepts.
 
 It is implemented as a command-line application to keep the system lightweight and easy to operate without requiring a database or external framework.
 
-Future Enhancements
+## Future Enhancements
 
 Possible future improvements include:
 
@@ -171,7 +171,7 @@ Possible future improvements include:
 * Anonymous feedback option
 * More detailed analytics
 
-Author
+## Author
 
 Divya Jalan
 
